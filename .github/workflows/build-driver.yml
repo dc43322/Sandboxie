@@ -1,0 +1,25 @@
+name: Build Sandboxie driver
+
+on:
+  workflow_dispatch:
+
+jobs:
+  driver:
+    runs-on: windows-2022
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: microsoft/setup-msbuild@v2
+
+      - name: Build x64 driver
+        run: msbuild Sandboxie\SandboxDrv.sln /t:Build /p:Configuration=SbieRelease /p:Platform=x64 /m:8
+
+      - name: Upload driver build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: sandboxie-driver-x64
+          path: |
+            Sandboxie/Bin/x64/SbieRelease/SbieDrv.sys
+            Sandboxie/Bin/x64/SbieRelease/SbieDrv.pdb
+          if-no-files-found: error
