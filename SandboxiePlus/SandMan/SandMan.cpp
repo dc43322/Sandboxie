@@ -1432,7 +1432,7 @@ void CSandMan::UpdateLabel()
 	{
 		LabelText = theConf->GetString("Updater/LabelMessage");
 		if(LabelText.isEmpty())
-			LabelText = tr("<a href=\"https://sandboxie-plus.com/go.php?to=patreon\">Support Sandboxie-Plus on Patreon</a>");
+			LabelText = tr("<a href=\"localhost/go.php?to=patreon\">Support Sandboxie-Plus on Patreon</a>");
 		LabelTip = tr("Click to open web browser");
 
 		//auto neon = new CNeonEffect(10, 4, 240);
@@ -3573,7 +3573,7 @@ QString CSandMan::FormatSbieMessage(quint32 MsgCode, const QStringList& MsgData,
 
 QString CSandMan::MakeSbieMsgLink(quint32 MsgCode, const QStringList& MsgData, QString ProcessName)
 {
-	QUrl Url("https://sandboxie-plus.com/go.php");
+	QUrl Url("localhost/go.php");
 	QUrlQuery Query;
 	Query.addQueryItem("to", "sbie-sbie" + QString::number(MsgCode & 0xFFFF));
 	for (int i = 1; i < MsgData.size(); i++)
@@ -3606,15 +3606,15 @@ void CSandMan::OnLogSbieMessage(quint32 MsgCode, const QStringList& MsgData, qui
 		if ((MsgCode & 0xFFFF) == 6008)
 		{
 			Message = tr("The box %1 is configured to use features exclusively available to project supporters.").arg(BoxDisplayName);
-			Message.append(tr("<br /><a href=\"https://sandboxie-plus.com/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"https://sandboxie-plus.com/go.php?to=sbie-cert\">supporter certificate</a>"));
+			Message.append(tr("<br /><a href=\"localhost/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"localhost/go.php?to=sbie-cert\">supporter certificate</a>"));
 		}
 		else if ((MsgCode & 0xFFFF) == 6009)
 		{
 			Message = tr("The box %1 is configured to use features which require an <b>advanced</b> supporter certificate.").arg(BoxDisplayName);
 			if(g_CertInfo.active)
-				Message.append(tr("<br /><a href=\"https://sandboxie-plus.com/go.php?to=sbie-upgrade-cert\">Upgrade your Certificate</a> to unlock advanced features."));
+				Message.append(tr("<br /><a href=\"localhost/go.php?to=sbie-upgrade-cert\">Upgrade your Certificate</a> to unlock advanced features."));
 			else
-				Message.append(tr("<br /><a href=\"https://sandboxie-plus.com/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"https://sandboxie-plus.com/go.php?to=sbie-cert\">supporter certificate</a>"));
+				Message.append(tr("<br /><a href=\"localhost/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"localhost/go.php?to=sbie-cert\">supporter certificate</a>"));
 		}
 		else
 		{
@@ -3626,7 +3626,7 @@ void CSandMan::OnLogSbieMessage(quint32 MsgCode, const QStringList& MsgData, qui
 					Message = tr("The program %1 started in box %2 will be terminated in 5 minutes because the box was configured to use features exclusively available to project supporters.").arg(MsgData[2]).arg(BoxDisplayName);
 				else
 					Message = tr("The box %1 is configured to use features exclusively available to project supporters, these presets will be ignored.").arg(BoxDisplayName);
-				Message.append(tr("<br /><a href=\"https://sandboxie-plus.com/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"https://sandboxie-plus.com/go.php?to=sbie-cert\">supporter certificate</a>"));
+				Message.append(tr("<br /><a href=\"localhost/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"localhost/go.php?to=sbie-cert\">supporter certificate</a>"));
 
 				//bCertWarning = false;
 			}
@@ -3637,7 +3637,7 @@ void CSandMan::OnLogSbieMessage(quint32 MsgCode, const QStringList& MsgData, qui
 			ShowMessageBox(this, QMessageBox::Critical, Message);
 			/*msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 			if (msgBox.exec() == QDialogButtonBox::Yes) {
-				OpenUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-get-cert"));
+				OpenUrl(QUrl("localhost/go.php?to=sbie-get-cert"));
 			}*/
 		}
 		// return;
@@ -3722,9 +3722,9 @@ bool CSandMan::CheckCertificate(QWidget* pWidget, int iType)
 		if (iType == 2 && CERT_IS_TYPE(g_CertInfo, eCertPatreon))
 			Message.append(tr("<br />you need to be on the Great Patreon level or higher to unlock this feature."));
 		else if (g_CertInfo.active)
-			Message.append(tr("<br /><a href=\"https://sandboxie-plus.com/go.php?to=sbie-upgrade-cert\">Upgrade your Certificate</a> to unlock advanced features."));
+			Message.append(tr("<br /><a href=\"localhost/go.php?to=sbie-upgrade-cert\">Upgrade your Certificate</a> to unlock advanced features."));
 		else
-			Message.append(tr("<br /><a href=\"https://sandboxie-plus.com/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"https://sandboxie-plus.com/go.php?to=sbie-cert\">supporter certificate</a>"));
+			Message.append(tr("<br /><a href=\"localhost/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"localhost/go.php?to=sbie-cert\">supporter certificate</a>"));
 	}
 	else
 	{
@@ -3733,10 +3733,10 @@ bool CSandMan::CheckCertificate(QWidget* pWidget, int iType)
 
 		if(iType == 2)
 			Message = tr("The selected feature set is only available to project supporters.<br />"
-				"<a href=\"https://sandboxie-plus.com/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"https://sandboxie-plus.com/go.php?to=sbie-cert\">supporter certificate</a>");
+				"<a href=\"localhost/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"localhost/go.php?to=sbie-cert\">supporter certificate</a>");
 		else
 			Message = tr("The selected feature set is only available to project supporters. Processes started in a box with this feature set enabled without a supporter certificate will be terminated after 5 minutes.<br />"
-				"<a href=\"https://sandboxie-plus.com/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"https://sandboxie-plus.com/go.php?to=sbie-cert\">supporter certificate</a>");
+				"<a href=\"localhost/go.php?to=sbie-get-cert\">Become a project supporter</a>, and receive a <a href=\"localhost/go.php?to=sbie-cert\">supporter certificate</a>");
 	}
 
 	QMessageBox msgBox(pWidget);
@@ -3748,7 +3748,7 @@ bool CSandMan::CheckCertificate(QWidget* pWidget, int iType)
 	msgBox.exec();
 	/*msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
 	if (msgBox.exec() == QDialogButtonBox::Yes) {
-		OpenUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-get-cert"));
+		OpenUrl(QUrl("localhost/go.php?to=sbie-get-cert"));
 	}*/
 
 	return false;
@@ -4099,7 +4099,7 @@ SB_STATUS CSandMan::ConnectSbieImpl()
 		Status = SB_OK;
 	}
 	else if (Status.GetStatus() == 0xC000A000L /*STATUS_INVALID_SIGNATURE*/) {
-		QMessageBox::critical(this, "Sandboxie-Plus", tr("<b>ERROR:</b> The Sandboxie-Plus Manager (SandMan.exe) does not have a valid signature (SandMan.exe.sig). Please download a trusted release from the <a href=\"https://sandboxie-plus.com/go.php?to=sbie-get\">official Download page</a>."));
+		QMessageBox::critical(this, "Sandboxie-Plus", tr("<b>ERROR:</b> The Sandboxie-Plus Manager (SandMan.exe) does not have a valid signature (SandMan.exe.sig). Please download a trusted release from the <a href=\"localhost/go.php?to=sbie-get\">official Download page</a>."));
 		Status = SB_OK;
 	}
 
@@ -4869,7 +4869,7 @@ void CSandMan::OpenUrl(QUrl url)
 		else if (path == "/apply")
 			m_pUpdater->ApplyUpdate(COnlineUpdater::eFull, false);
 		else
-			OpenUrl("https://sandboxie-plus.com/sandboxie" + path);
+			OpenUrl("localhost/sandboxie" + path);
 		return;
 	}
 
@@ -5103,16 +5103,16 @@ void CSandMan::LoadLanguage(const QString& Lang, const QString& Module, int Inde
 void CSandMan::OnHelp()
 {
 	//if (sender() == m_pSupport)
-	//	QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=donate"));
+	//	QDesktopServices::openUrl(QUrl("localhost/go.php?to=donate"));
 	//else
 	if (sender() == m_pContribution)
-		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-contribute"));
+		QDesktopServices::openUrl(QUrl("localhost/go.php?to=sbie-contribute"));
 	else if (sender() == m_pManual)
-		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-docs"));
+		QDesktopServices::openUrl(QUrl("localhost/go.php?to=sbie-docs"));
 	else if (sender() == m_pForum)
-		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-forum"));
+		QDesktopServices::openUrl(QUrl("localhost/go.php?to=sbie-forum"));
 	else
-		QDesktopServices::openUrl(QUrl("https://sandboxie-plus.com/go.php?to=patreon"));
+		QDesktopServices::openUrl(QUrl("localhost/go.php?to=patreon"));
 }
 
 void CSandMan::OnAbout()
@@ -5140,7 +5140,7 @@ void CSandMan::OnAbout()
 
 		QString AboutText = tr(
 			"Sandboxie-Plus is an open source continuation of Sandboxie.<br />"
-			"Visit <a href=\"https://sandboxie-plus.com\">sandboxie-plus.com</a> for more information.<br />"
+			"Visit <a href=\"localhost\">sandboxie-plus.com</a> for more information.<br />"
 			"<br />"
 			"%2<br />"
 			"<br />"

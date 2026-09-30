@@ -277,8 +277,8 @@ void CBeginPage::initializePage()
     m_pLayout->addItem(new QSpacerItem(10, 10, QSizePolicy::Fixed, QSizePolicy::Expanding), row++, 0);
 
     if (!g_CertInfo.active || g_CertInfo.expired) {
-        QLabel* pBottomLabel = new QLabel(tr("With a valid <a href=\"https://sandboxie-plus.com/go.php?to=sbie-cert\">supporter certificate</a> the wizard would be even more powerful. "
-            "It could access the <a href=\"https://sandboxie-plus.com/go.php?to=sbie-issue-db\">online solution database</a> to retrieve the latest troubleshooting instructions."));
+        QLabel* pBottomLabel = new QLabel(tr("With a valid <a href=\"localhost/go.php?to=sbie-cert\">supporter certificate</a> the wizard would be even more powerful. "
+            "It could access the <a href=\"localhost/go.php?to=sbie-issue-db\">online solution database</a> to retrieve the latest troubleshooting instructions."));
         connect(pBottomLabel, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
         pBottomLabel->setWordWrap(true);
         m_pLayout->addWidget(pBottomLabel, row++, 0, 1, 3);
@@ -1031,7 +1031,7 @@ bool CSubmitPage::validatePage()
     randId.setBody(QString::number(RandID, 16).rightJustified(16, '0').toUpper().toUtf8());
     pMultiPart->append(randId);
 
-    QUrl Url("https://sandboxie-plus.com/issues/submit.php");
+    QUrl Url("localhost/issues/submit.php");
     QNetworkRequest Request(Url);
 	//Request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
 	Request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);

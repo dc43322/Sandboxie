@@ -314,7 +314,7 @@ void CCertificatePage::initializePage()
         theAPI->SetSecureParam("UsageFlags", &UsageFlags, sizeof(UsageFlags));
 
         m_pTopLabel->setText(
-            tr("To use <b>Sandboxie-Plus</b> in a business setting, an appropriate <a href=\"https://sandboxie-plus.com/go.php?to=sbie-get-cert\">support certificate</a> for business use is required. "
+            tr("To use <b>Sandboxie-Plus</b> in a business setting, an appropriate <a href=\"localhost/go.php?to=sbie-get-cert\">support certificate</a> for business use is required. "
             "If you do not yet have the required certificate(s), you can get those from the <a href=\"https://xanasoft.com/shop/\">xanasoft.com web shop</a>.")
         );
 
@@ -330,8 +330,8 @@ void CCertificatePage::initializePage()
         m_pTopLabel->setText(
             tr("<b>Sandboxie-Plus</b> provides additional features and box types exclusively to <u>project supporters</u>. "
                 "Boxes like the Privacy Enhanced boxes <b><font color='red'>protect user data from illicit access</font></b> by the sandboxed programs. "
-                "If you are not yet a supporter, then please consider <a href=\"https://sandboxie-plus.com/go.php?to=sbie-get-cert\">supporting the project</a> "
-                "to ensure further development of Sandboxie and to receive a <a href=\"https://sandboxie-plus.com/go.php?to=sbie-cert\">supporter certificate</a>.")
+                "If you are not yet a supporter, then please consider <a href=\"localhost/go.php?to=sbie-get-cert\">supporting the project</a> "
+                "to ensure further development of Sandboxie and to receive a <a href=\"localhost/go.php?to=sbie-cert\">supporter certificate</a>.")
         );
 
         m_pEvaluate->setVisible(false);
@@ -671,7 +671,7 @@ CSBUpdate::CSBUpdate(QWidget *parent)
         "or experimental changes that may not be ready for wider use."));
     layout->addWidget(m_pInsider, row, 2, 1, 1);
     registerField("channelInsider", m_pInsider);
-    QLabel* pInsiderInfo = new QLabel(tr("More about the <a href=\"https://sandboxie-plus.com/go.php?to=sbie-insider\">Insider Channel</a>"));
+    QLabel* pInsiderInfo = new QLabel(tr("More about the <a href=\"localhost/go.php?to=sbie-insider\">Insider Channel</a>"));
     connect(pInsiderInfo, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
     layout->addWidget(pInsiderInfo, row++, 3, 1, 1);
 
@@ -706,7 +706,7 @@ CSBUpdate::CSBUpdate(QWidget *parent)
 
     layout->addItem(new QSpacerItem(10, 10, QSizePolicy::Fixed, QSizePolicy::Expanding), row++, 0);
 
-    m_pBottomLabel = new QLabel(tr("Access to the latest compatibility templates and the online troubleshooting database requires a valid <a href=\"https://sandboxie-plus.com/go.php?to=sbie-cert\">supporter certificate</a>."));
+    m_pBottomLabel = new QLabel(tr("Access to the latest compatibility templates and the online troubleshooting database requires a valid <a href=\"localhost/go.php?to=sbie-cert\">supporter certificate</a>."));
     connect(m_pBottomLabel, SIGNAL(linkActivated(const QString&)), theGUI, SLOT(OpenUrl(const QString&)));
     m_pBottomLabel->setWordWrap(true);
     layout->addWidget(m_pBottomLabel, row++, 0, 1, rows);

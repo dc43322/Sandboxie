@@ -2762,7 +2762,7 @@ afx_msg void CBoxPage::OnLinkLabel(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	PNMLINK pNMLink = (PNMLINK) pNMHDR;
 
-	CRunBrowser x(this, CString(L"https://sandboxie-plus.com/go.php?to=sbie-plus&tip=") + pNMLink->item.szID);
+	CRunBrowser x(this, CString(L"localhost/go.php?to=sbie-plus&tip=") + pNMLink->item.szID);
 
 	*pResult = 0;
 }

@@ -295,7 +295,7 @@ SB_STATUS CNewBoxWizard::TryToCreateBox()
                 if (theConf->GetBool("Options/WarnDeleteV2", true)) {
                     bool State = false;
                     CCheckableMessageBox::question(this, "Sandboxie-Plus",
-                        tr("The new sandbox has been created using the new <a href=\"https://sandboxie-plus.com/go.php?to=sbie-delete-v2\">Virtualization Scheme Version 2</a>, if you experience any unexpected issues with this box,"
+                        tr("The new sandbox has been created using the new <a href=\"localhost/go.php?to=sbie-delete-v2\">Virtualization Scheme Version 2</a>, if you experience any unexpected issues with this box,"
                             " please switch to the Virtualization Scheme to Version 1 and report the issue,"
                             " the option to change this preset can be found in the Box Options in the Box Structure group.")
                         , tr("Don't show this message again."), &State, QDialogButtonBox::Ok, QDialogButtonBox::Ok, QMessageBox::Information);

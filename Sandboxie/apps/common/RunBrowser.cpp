@@ -136,7 +136,7 @@ void CRunBrowser::OnNo()
 
 CString CRunBrowser::GetTopicUrl(const CString &topic)
 {
-    return L"https://sandboxie-plus.com/go.php?to=sbie-" + topic;
+    return L"localhost/go.php?to=sbie-" + topic;
 }
 
 

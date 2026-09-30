@@ -997,7 +997,7 @@ void CMyFrame::OnCmdConfReload()
 
 void CMyFrame::OnCmdHelpSupport()
 {
-	CRunBrowser x(this, L"https://sandboxie-plus.com/go.php?to=donate");
+	CRunBrowser x(this, L"localhost/go.php?to=donate");
 }
 
 
@@ -1008,7 +1008,7 @@ void CMyFrame::OnCmdHelpSupport()
 
 void CMyFrame::OnCmdHelpContribution()
 {
-	CRunBrowser x(this, L"https://sandboxie-plus.com/go.php?to=sbie-contribute");
+	CRunBrowser x(this, L"localhost/go.php?to=sbie-contribute");
 }
 
 
@@ -1044,7 +1044,7 @@ void CMyFrame::OnCmdHelpTutorial()
 
 void CMyFrame::OnCmdHelpForum()
 {
-    CRunBrowser x(this, L"https://sandboxie-plus.com/go.php?to=sbie-forum");
+    CRunBrowser x(this, L"localhost/go.php?to=sbie-forum");
 }
 
 //---------------------------------------------------------------------------
@@ -1065,7 +1065,7 @@ void CMyFrame::OnCmdHelpUpdate()
 
 void CMyFrame::OnCmdHelpUpgrade()
 {
-	CRunBrowser x(this, L"https://sandboxie-plus.com/go.php?to=sbie-plus&tip=upgrade");
+	CRunBrowser x(this, L"localhost/go.php?to=sbie-plus&tip=upgrade");
 }
 
 
@@ -1078,7 +1078,7 @@ extern "C" void OpenWebView(const WCHAR * url, const WCHAR * title);
 void CMyFrame::OnCmdHelpWhatsNew()
 {
     CString url;
-    url.Format(L"https://sandboxie-plus.com/go.php?to=sbie-whatsnew&language=%d&version=%S", SbieDll_GetLanguage(NULL), MY_VERSION_STRING);
+    url.Format(L"localhost/go.php?to=sbie-whatsnew&language=%d&version=%S", SbieDll_GetLanguage(NULL), MY_VERSION_STRING);
 
     WCHAR path[MAX_PATH];
     GetModuleFileName(NULL, path, sizeof(path) / sizeof(WCHAR) - 4);
@@ -1104,7 +1104,7 @@ extern "C" void OpenWebView(const WCHAR * url, const WCHAR * title);
 void CMyFrame::OnCmdHelpMigrate()
 {
     CString url;
-    url.Format(L"https://sandboxie-plus.com/go.php?to=sbie-migration&language=%d", SbieDll_GetLanguage(NULL));
+    url.Format(L"localhost/go.php?to=sbie-migration&language=%d", SbieDll_GetLanguage(NULL));
 
     /*WCHAR path[MAX_PATH];
     GetModuleFileName(NULL, path, sizeof(path) / sizeof(WCHAR) - 4);
@@ -1126,7 +1126,7 @@ void CMyFrame::OnCmdHelpMigrate()
 
 void CMyFrame::OnCmdHelpGetCert()
 {
-    CRunBrowser x(this, L"https://sandboxie-plus.com/go.php?to=sbie-get-cert");
+    CRunBrowser x(this, L"localhost/go.php?to=sbie-get-cert");
 }
 
 
@@ -1217,7 +1217,7 @@ void CMyFrame::OnCmdResourceMonitor()
             settings.SetBool(_ResMonNotify, FALSE);
         }
         if (rv == IDYES) {
-            CRunBrowser x(this, L"https://sandboxie-plus.com/go.php?to=sbie-plus&tip=res_mon");
+            CRunBrowser x(this, L"localhost/go.php?to=sbie-plus&tip=res_mon");
             return;
         }
     }

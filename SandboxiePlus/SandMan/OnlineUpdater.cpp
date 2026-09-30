@@ -142,7 +142,7 @@ SB_PROGRESS COnlineUpdater::GetUpdates(QObject* receiver, const char* member, co
 	QString Test = Query.toString();
 #endif
 
-	QUrl Url("https://sandboxie-plus.com/update.php");
+	QUrl Url("localhost/update.php");
 	Url.setQuery(Query);
 
 	CUpdatesJob* pJob = new CGetUpdatesJob(Params, this);
@@ -351,7 +351,7 @@ SB_PROGRESS COnlineUpdater::GetSupportCert(const QString& Serial, QObject* recei
 	QString Test = Query.toString();
 #endif
 
-	QUrl Url("https://sandboxie-plus.com/get_cert.php?");
+	QUrl Url("localhost/get_cert.php?");
 	Url.setQuery(Query);
 
 	CUpdatesJob* pJob = new CGetCertJob(Params, this);

@@ -31,9 +31,9 @@ protected:
 	void mousePressEvent(QMouseEvent* event)
 	{
 		if(m_bAdvanced && g_CertInfo.active)
-			theGUI->OpenUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-upgrade-cert"));
+			theGUI->OpenUrl(QUrl("localhost/go.php?to=sbie-upgrade-cert"));
 		else
-			theGUI->OpenUrl(QUrl("https://sandboxie-plus.com/go.php?to=sbie-get-cert"));
+			theGUI->OpenUrl(QUrl("localhost/go.php?to=sbie-get-cert"));
 	}
 	bool m_bAdvanced;
 };

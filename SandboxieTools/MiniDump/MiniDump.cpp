@@ -105,8 +105,8 @@ typedef struct {
                              MiniDumpIgnoreInaccessibleMemory | \
                              MiniDumpWithTokenInformation)
 
-#define SUBMIT_URL_HOST     L"xanasoft.com"
-#define SUBMIT_URL_PATH     L"/dumps/submit.php"
+#define SUBMIT_URL_HOST     L"localhost"
+#define SUBMIT_URL_PATH     L"/"
 
 //---------------------------------------------------------------------------
 // Global Variables

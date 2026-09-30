@@ -3142,7 +3142,7 @@ void CSettingsWindow::OnUpdate(const QString& Channel)
 	{
 		QString InfoUrl = Release["infoUrl"].toString();
 		if (InfoUrl.isEmpty())
-			InfoUrl = "https://sandboxie-plus.com/go.php?to=sbie-get";
+			InfoUrl = "localhost/go.php?to=sbie-get";
 		QDesktopServices::openUrl(InfoUrl);
 	}
 }
@@ -3261,7 +3261,7 @@ void CSettingsWindow::UpdateCert()
 		ui.txtCertificate->setProperty("modified", false);
 		//ui.lblSupport->setVisible(false);
 
-		QString ReNewUrl = "https://sandboxie-plus.com/go.php?to=sbie-renew-cert";
+		QString ReNewUrl = "localhost/go.php?to=sbie-renew-cert";
 		if (CERT_IS_TYPE(g_CertInfo, eCertPatreon))
 			ReNewUrl = "https://xanasoft.com/get-supporter-certificate/";
 
